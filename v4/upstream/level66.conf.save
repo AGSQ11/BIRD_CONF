@@ -1,0 +1,32 @@
+protocol bgp level66 { 
+  local as 3280;
+  neighbor 141.98.136.97 as 209844;  
+  source address 141.98.136.117;
+   import filter {
+   if  net ~ martians then reject;
+ 
+   accept;
+7   }; 
+  export filter {
+   if net ~ mypfx then accept;
+   gw = 77.83.243.1;
+   reject;
+   };  
+} 
+
+protocol bgp level66B { 
+  local as 3280;
+  neighbor 141.98.136.126 as 209844;  
+  source address 141.98.136.117;
+   import filter {
+   if  net ~ martians then reject;
+ 
+   accept;
+   }; 
+  export filter {
+   if net ~ mypfx then accept;
+   gw = 77.83.243.1;
+   reject;
+   };   
+}
+
